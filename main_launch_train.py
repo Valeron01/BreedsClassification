@@ -39,7 +39,7 @@ def main():
         pin_memory=True
     )
 
-    logger = pl.loggers.TensorBoardLogger(parsed_args.lightning_folder_dir)
+    logger = pl.loggers.TensorBoardLogger(parsed_args.lightning_folder_dir, default_hp_metric=False)
     checkpointer = pl.callbacks.ModelCheckpoint(os.path.join(parsed_args.lightning_folder_path, "checkpoints"))
 
     trainer = pl.Trainer(
@@ -47,7 +47,8 @@ def main():
         logger=logger,
         callbacks=[checkpointer],
         log_every_n_steps=2,
-        gradient_clip_val=1
+        gradient_clip_val=1,
+
     )
 
 
