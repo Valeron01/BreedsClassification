@@ -1,0 +1,11 @@
+{
+  "classifier": {
+    "model_name": "SimplePlaneNetwork",
+    "n_filters": 32,
+    "use_batch_norm": true
+  },
+  "optimizer": {
+    "optimizer_name": "Adam",
+    "lr": 1e-3
+  }
+}
