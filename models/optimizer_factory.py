@@ -10,3 +10,5 @@ def get_optimizer_by_config(parameters: typing.Iterable[torch.nn.Parameter], opt
     if optimizer_name == "Adam":
         optimizer = torch.optim.Adam(parameters, lr)
         return optimizer
+
+    raise NotImplementedError(f"Optimizer {optimizer_name} is not implemented!")
