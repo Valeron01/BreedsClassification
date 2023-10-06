@@ -15,7 +15,7 @@ def main():
 
     for image, class_index in dataset:
         print(dataset.all_classes[class_index])
-        cv2.imshow("Image", image)
+        cv2.imshow("Image", image.permute(1, 2, 0).numpy())
         cv2.waitKey(0)
 
 

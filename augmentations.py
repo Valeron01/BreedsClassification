@@ -1,4 +1,5 @@
 import albumentations as al
+from albumentations.pytorch import ToTensorV2
 
 
 def get_augmentations():
@@ -9,5 +10,6 @@ def get_augmentations():
         al.HorizontalFlip(),
         al.RandomGamma(),
         al.RandomBrightnessContrast(),
+        ToTensorV2()
     ])
 

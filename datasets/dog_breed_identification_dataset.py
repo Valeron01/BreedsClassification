@@ -4,6 +4,7 @@ import typing
 import cv2
 import numpy as np
 import pandas as pd
+import torch
 from torch.utils.data import Dataset
 
 
@@ -141,7 +142,7 @@ class DogBreedIdentificationDataset(Dataset):
     def __len__(self) -> int:
         return len(self.loaded_csv)
 
-    def __getitem__(self, item: int) -> typing.Tuple[np.ndarray, int]:
+    def __getitem__(self, item: int) -> typing.Tuple[typing.Union[np.ndarray, torch.Tensor], int]:
         """
         :param item: index of a pair of data
         :return: Tuple of loaded image and index of a class, to which the image belongs
