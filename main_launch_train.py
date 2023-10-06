@@ -1,3 +1,4 @@
+import json
 import os.path
 from argparse import ArgumentParser
 
@@ -9,11 +10,13 @@ import torch.utils.data
 
 import augmentations
 from datasets.dog_breed_identification_dataset import DogBreedIdentificationDataset
+from models.lit_modules.lit_classification_model import LitBasicClassificationModel
 
 
 def main():
     parser = ArgumentParser()
     parser.add_argument("--dataset_path", required=True)
+    parser.add_argument("--model_config_path", required=True)
     parser.add_argument("--lightning_folder_path", required=True)
     parser.add_argument("--num_workers", required=False, default=0)
     parser.add_argument("--batch_size", required=False, default=32)
@@ -51,8 +54,14 @@ def main():
 
     )
 
+    with open(parsed_args.model_config_path, "r") as f:
+        loaded_model_config_dict = json.load(f)
 
+    model = LitBasicClassificationModel(
+        loaded_model_config_dict
+    )
 
+    trainer.fit(model, train_loader, val_loader)
 
 
 if __name__ == '__main__':

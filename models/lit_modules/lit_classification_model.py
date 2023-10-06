@@ -4,7 +4,7 @@ from models.model_factory import get_model_by_config
 from models.optimizer_factory import get_optimizer_by_config
 
 
-class LitSimpleClassificationModel(pl.LightningModule):
+class LitBasicClassificationModel(pl.LightningModule):
     def __init__(
             self,
             model_config,
